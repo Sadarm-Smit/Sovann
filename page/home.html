@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css"/>
+    <script>
+        $(function(){
+            $('#header').load("./header.html")
+            // $('#Bottom').load("./Bottom.html")
+        })
+        
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <title>Sovann || Terminal</title>
+</head>
+<body>
+    <script>
+        $('body').terminal({
+            hello: function(what) {
+                this.echo('Hello, ' + what +
+                          '. Wellcome to this terminal.');
+            }
+        }, {
+            greetings: 'My First Web Terminal'
+        });
+        function get_image(url) {
+            return new Promise(function(resolve, reject) {
+                const img = $('<img src="' + url + '"/>');
+                img.on('load', () => resolve(img));
+                img.on('error', reject);
+            });
+        }
+        $('body').terminal({
+            cat: function(width, height) {
+                return get_image('https://placekitten.com/' + width +
+                                '/' + height);
+            },
+            dog: function(width, height) {
+                return get_image('https://placedog.net/' + width +
+                                '/' + height);
+            }
+        }, {
+            greetings: 'My First JavaScript Terminal\n'
+        });
+    
+    </script>
+</body>
+</html>
