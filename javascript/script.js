@@ -9,6 +9,9 @@ function login() {
             window.open("../page/home.html"); 
         }
         
+    } else 
+    {
+        console.log("incrrect!")
     }
 }
 
