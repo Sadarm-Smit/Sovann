@@ -45,6 +45,7 @@ a , p {
 
 .Center .frame {
     text-align: center;
+    width: 100%;
 }
 
 #Submit {
