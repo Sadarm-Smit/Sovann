@@ -1,1 +1,1 @@
-SELECT Now();
+SELECT NOW();
