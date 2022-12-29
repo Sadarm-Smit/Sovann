@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head id="header">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            $('#header').load("./header.html")
+            $('#Bottom').load("./Bottom.html")
+        })
+        
+    </script>
+    <title>Sovann || Login</title>
+</head>
+<body>
+    <div class="main">
+        <!-- <div class="Top">
+            <ul>
+                <li><a href="#">Music</a></li>
+            </ul>
+        </div> -->
+        <div class="Center">
+            <img src="./icon/logo.png" alt="LOGO">
+            <form class="frame" action="./php/index.php" method="post">
+                <div class="input">
+                    <p class="email">email</p>
+                    <input type="email" name="email" id="email" placeholder="Enter email">
+                    <p class="email">password</p>
+                    <input type="password" name="password" id="email" placeholder="Enter password ">
+                </div>
+                <Button id="Submit">Submit</Button>
+            </form>
+        </div>
+        <div class="Bottom" id="Bottom" >
+            <div class="list_web">
+
+            </div>
+            <div class="list_credit">
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
