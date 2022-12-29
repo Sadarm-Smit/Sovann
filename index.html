@@ -25,7 +25,7 @@
                     <p class="email">email</p>
                     <input type="email" name="email" id="email" placeholder="Enter email" id="email" required>
                     <p class="email">password</p>
-                    <input type="password" name="password" id="email" placeholder="Enter password " id="password" required>
+                    <input type="password" name="password" id="password" placeholder="Enter password " id="password" required>
                 </div>
                 <Button id="Submit" onclick="login()">Submit</Button>
             </form>
@@ -39,5 +39,64 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        window.onload = ()=>{
+            this.sessionStorage.setItem("email", "example@gmail.com");
+            this.sessionStorage.setItem("password", "password");
+        }
+
+        var input = document.getElementsByTagName('input');
+        var email = document.getElementById('email');
+        var password = document.getElementById('password');
+        var form = document.querySelector('form');
+        form.onsubmit = ()=>{return false}
+
+        button[0].onclick = ()=> {
+            if(input[0].value != "") && (input[1].value != "")
+            {
+                if((input[0].value == sessionStorage.getItem("email")) && (input[0].value == sessionStorage.getItem("password")))
+                {
+                    form.onsubmit = ()=>{return 1}
+                    document.cookie = "email"+input[0].value;
+                    document.cookie = "password"+input[1].value;
+                }
+                else
+                {
+                    if((input[0].value != sessionStorage.getItem("email")))
+                    {
+                        input[0].nextElementSibling.textContent = "email is not currect";
+                        setTimeout(()=>{
+                            input[0].nextElementSibling.textContent = "";
+                        }, 2000)
+                    }
+                    if((input[1].value != sessionStorage.getItem("password")))
+                    {
+                        input[1].nextElementSibling.textContent = "password is not currect";
+                        setTimeout(()=>{
+                            input[1].nextElementSibling.textContent = "";
+                        }, 2000)
+                    }
+                }
+            } 
+            else
+            {
+                if(input[0].value != "")
+                {
+                    input[0].nextElementSibling.textContent = "email is empty";
+                    setTimeout(()=>{
+                        input[0].nextElementSibling.textContent = "";
+                    }, 2000)
+                }
+                if(input[1].value != "")
+                {
+                    input[1].nextElementSibling.textContent = "password is empty";
+                    setTimeout(()=>{
+                        input[1].nextElementSibling.textContent = "";
+                    }, 2000)
+                }
+            }
+
+        }
+    </script>
 </body>
 </html>
