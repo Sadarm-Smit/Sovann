@@ -19,8 +19,7 @@
             </ul>
         </div> -->
         <div class="Center">
-            <p id="terminal">$</p>
-            <textarea id="input"></textarea>
+            <div id="terminal"></div>
         </div>
         <div class="Bottom" id="Bottom" >
             <div class="list_web">
@@ -33,44 +32,17 @@
     </div>
 
     <script>
-    // Get references to the terminal and input elements
-    var terminal = document.getElementById('terminal');
-    var input = document.getElementById('input');
+        const term = new Terminal();
+        term.open(document.getElementById('terminal'));
 
-    // Add an event listener to the input element to handle the user's input
-    input.addEventListener('keydown', function (e) {
-        // If the user pressed the Enter key, execute the command
-        if (e.keyCode === 13) {
-        // Get the command from the input element
-        var command = input.value;
+        term.write('ls');
+        term.write('pwd');
 
-        // Clear the input element
-        input.value = '';
-
-        // Execute the command and get the output
-        var output = executeCommand(command);
-
-        // Update the terminal with the output of the command
-        terminal.innerHTML += '\n' + output;
-
-        // Add the prompt to the terminal
-        terminal.innerHTML += '\n$';
+        term.handler = function(data) {
+        console.log(data);
         }
-    });
 
-    function executeCommand(command) {
-        // Your code to execute the command goes here
-        // For example, you might use a switch statement to handle different commands:
-        switch (command) {
-        case 'cls':
-            return terminal.innerHTML = null;;
-        case 'pwd':
-            return '/home/user';
-            
-        default:
-            return 'Command not found';
-        }
-    }
+        
     </script>
 
 </body>
