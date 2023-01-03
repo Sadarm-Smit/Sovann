@@ -19,16 +19,8 @@
             </ul>
         </div> -->
         <div class="Center">
-            <img src="./icon/LOGO.png" alt="LOGO">
-            <form class="frame" action="./index.html" method="POST">
-                <div class="input" id="input">
-                    <p class="email">email</p>
-                    <input type="email" name="email" id="email" placeholder="Enter email" id="email" required>
-                    <p class="email">password</p>
-                    <input type="password" name="password" id="password" placeholder="Enter password " id="password" required>
-                </div>
-                <Button id="Submit">Submit</Button>
-            </form>
+            <pre id="terminal">$</pre>
+            <textarea id="input"></textarea>
         </div>
         <div class="Bottom" id="Bottom" >
             <div class="list_web">
@@ -39,64 +31,46 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        window.onload = ()=>{
-            this.sessionStorage.setItem("email", "example@gmail.com");
-            this.sessionStorage.setItem("password", "password");
+
+    <script>
+    // Get references to the terminal and input elements
+    var terminal = document.getElementById('terminal');
+    var input = document.getElementById('input');
+
+    // Add an event listener to the input element to handle the user's input
+    input.addEventListener('keydown', function (e) {
+        // If the user pressed the Enter key, execute the command
+        if (e.keyCode === 13) {
+        // Get the command from the input element
+        var command = input.value;
+
+        // Clear the input element
+        input.value = '';
+
+        // Execute the command and get the output
+        var output = executeCommand(command);
+
+        // Update the terminal with the output of the command
+        terminal.innerHTML += '\n' + output;
+
+        // Add the prompt to the terminal
+        terminal.innerHTML += '\n$';
         }
+    });
 
-        var input = document.getElementsByTagName('input');
-        var email = document.getElementById('email');
-        var password = document.getElementById('password');
-        var form = document.querySelector('form');
-        form.onsubmit = ()=>{return false}
-
-        button[0].onclick = ()=> {
-            if(input[0].value != "") && (input[1].value != "")
-            {
-                if((input[0].value == sessionStorage.getItem("email")) && (input[0].value == sessionStorage.getItem("password")))
-                {
-                    form.onsubmit = ()=>{return 1}
-                    document.cookie = "email"+input[0].value;
-                    document.cookie = "password"+input[1].value;
-                }
-                else
-                {
-                    if((input[0].value != sessionStorage.getItem("email")))
-                    {
-                        input[0].nextElementSibling.textContent = "email is not currect";
-                        setTimeout(()=>{
-                            input[0].nextElementSibling.textContent = "";
-                        }, 2000)
-                    }
-                    if((input[1].value != sessionStorage.getItem("password")))
-                    {
-                        input[1].nextElementSibling.textContent = "password is not currect";
-                        setTimeout(()=>{
-                            input[1].nextElementSibling.textContent = "";
-                        }, 2000)
-                    }
-                }
-            } 
-            else
-            {
-                if(input[0].value != "")
-                {
-                    input[0].nextElementSibling.textContent = "email is empty";
-                    setTimeout(()=>{
-                        input[0].nextElementSibling.textContent = "";
-                    }, 2000)
-                }
-                if(input[1].value != "")
-                {
-                    input[1].nextElementSibling.textContent = "password is empty";
-                    setTimeout(()=>{
-                        input[1].nextElementSibling.textContent = "";
-                    }, 2000)
-                }
-            }
-
+    function executeCommand(command) {
+        // Your code to execute the command goes here
+        // For example, you might use a switch statement to handle different commands:
+        switch (command) {
+        case 'ls':
+            return 'file1 file2 file3';
+        case 'pwd':
+            return '/home/user';
+        default:
+            return 'Command not found';
         }
+    }
     </script>
+
 </body>
 </html>
