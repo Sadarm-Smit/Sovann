@@ -62,10 +62,11 @@
         // Your code to execute the command goes here
         // For example, you might use a switch statement to handle different commands:
         switch (command) {
-        case 'ls':
-            return 'file1 file2 file3';
+        case 'cls':
+            return terminal.innerHTML = null;;
         case 'pwd':
             return '/home/user';
+            
         default:
             return 'Command not found';
         }
